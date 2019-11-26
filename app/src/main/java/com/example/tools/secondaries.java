@@ -40,17 +40,17 @@ public class secondaries extends AppCompatActivity {
 
 private class MyTask extends AsyncTask<Void,Void,Void> {
 
-        int o1,o5;
-        String o2,o3,o4,o6;
+        int o5;
+        String o1,o2,o3,o4,o6;
 
 
         @Override
         protected Void doInBackground(Void... params) {
             URL url=null;
             Intent myNewIntent=getIntent();
-            int InfoReceivedId=myNewIntent.getIntExtra("ID" ,2 );
+            String InfoReceivedId=myNewIntent.getStringExtra("ID"  );
             try{
-                url=new URL("http://172.26.30.3:8080/webservicecalls/webresources/toolrental/user1/userinfo&"+InfoReceivedId);
+                url=new URL("http://172.26.30.3:8080/toolsrental/webresources/toolrental/user1/userinfo&"+InfoReceivedId);
                 HttpURLConnection client=null;
                 client=(HttpURLConnection) url.openConnection();
                 client.setRequestMethod("GET");
@@ -71,11 +71,11 @@ private class MyTask extends AsyncTask<Void,Void,Void> {
                 JSONObject obj=new JSONObject  (response.toString());
 
 
-                o1=obj.getInt("u_id");
+                o1=obj.getString("u_id");
                 o2=obj.getString("fname");
                 o3=obj.getString("lname");
                 o4=obj.getString("email");
-                o5= obj.getInt("phone");
+               // o5= obj.getInt("phone");
                 o6=obj.getString("address");
             }
             catch(MalformedURLException e)

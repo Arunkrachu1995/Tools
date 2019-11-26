@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public void nextPage(View myView){
 
         Intent myIntent=new Intent(this, secondaries.class);
-        myIntent.putExtra("ID",Integer.parseInt(in1.getText().toString()));
+        myIntent.putExtra("ID",(in1.getText().toString()));
         startActivity(myIntent);
 
 
