@@ -21,7 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class secondaries extends AppCompatActivity {
-    TextView out3,out4,out5,out6,out7,out8;
+    TextView out1,out2,out3,out4,out5,out6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,19 +29,19 @@ public class secondaries extends AppCompatActivity {
 
 
 
+        out1 =  findViewById((R.id.out1));
+        out2 =  findViewById((R.id.out2));
         out3 =  findViewById((R.id.out3));
         out4 =  findViewById((R.id.out4));
         out5 =  findViewById((R.id.out5));
         out6 =  findViewById((R.id.out6));
-        out7 =  findViewById((R.id.out7));
-        out8 =  findViewById((R.id.out8));
         new MyTask().execute();
     }
 
 private class MyTask extends AsyncTask<Void,Void,Void> {
 
-        int o3,o7;
-        String o4,o5,o6,o8;
+        int o1,o5;
+        String o2,o3,o4,o6;
 
 
         @Override
@@ -71,12 +71,12 @@ private class MyTask extends AsyncTask<Void,Void,Void> {
                 JSONObject obj=new JSONObject  (response.toString());
 
 
-                o3=obj.getInt("u_id");
-                o4=obj.getString("fname");
-                o5=obj.getString("lname");
-                o6=obj.getString("email");
-                o7= obj.getInt("phone");
-                o8=obj.getString("address");
+                o1=obj.getInt("u_id");
+                o2=obj.getString("fname");
+                o3=obj.getString("lname");
+                o4=obj.getString("email");
+                o5= obj.getInt("phone");
+                o6=obj.getString("address");
             }
             catch(MalformedURLException e)
             {
@@ -99,12 +99,12 @@ private class MyTask extends AsyncTask<Void,Void,Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
+            out1.setText(o1);
+            out2.setText(o2);
             out3.setText(o3);
             out4.setText(o4);
             out5.setText(o5);
             out6.setText(o6);
-            out7.setText(o7);
-            out8.setText(o8);
         super.onPostExecute(aVoid);
     }
 }
